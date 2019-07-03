@@ -1,0 +1,15 @@
+所谓重入锁，指的是以线程为单位，当一个线程获取对象锁之后，这个线程可以再次获取本对象上的锁，而其他的线程是不可以的。
+
+synchronized和ReentrantLock 都是可重入锁。
+
+ReentrantLock与synchronized比较：
+1.前者使用灵活，但是必须手动开启和释放锁
+
+2.前者扩展性好，有时间锁等候（tryLock( )），可中断锁等候（lockInterruptibly( )），锁投票等，适合用于高度竞争锁和多个条件变量的地方
+
+3.前者提供了可轮询的锁请求，可以尝试去获取锁（tryLock( )），如果失败，则会释放已经获得的锁。有完善的错误恢复机制，可以避免死锁的发生。
+
+4. ReentrantLock（重入锁）的好搭档：Condition
+它和wait()和notify()方法的作用是一致的，但是wait()和notify()是和synchronized关键字合作使用的，而Condition是和ReentrantLock（重入锁）相关联的。
+
+通过ReentrantLock锁的 new Condition() 方法可以生成一个与当前锁相关联的Condition实例。利用Condition对象，我们就可以让线程在合适的时候等待，或者在某一个特定的时刻让线程得到通知，继续执行。
