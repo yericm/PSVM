@@ -6,7 +6,8 @@ import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 信号量可以指定多个线程，同时访问某一个资源，扩展了synchronized和ReentrantLock锁
+ * 信号量可以指定多个线程，同时访问某一个资源，
+ * 扩展了synchronized和ReentrantLock锁
  * 一次只允许一个线程访问同一个资源的局限
  * created by yeric on 2019/7/15 22:23
  */
