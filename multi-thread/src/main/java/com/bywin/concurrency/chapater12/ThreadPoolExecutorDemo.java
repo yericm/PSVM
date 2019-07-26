@@ -1,4 +1,4 @@
-package com.bywin.concurrency.chapater11;
+package com.bywin.concurrency.chapater12;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;

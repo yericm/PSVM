@@ -1,9 +1,8 @@
-package com.bywin.concurrency.chapater11;
+package com.bywin.concurrency.chapater12;
 
 import java.util.Random;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorCompletionService;
 import java.util.concurrent.FutureTask;
 
 /**

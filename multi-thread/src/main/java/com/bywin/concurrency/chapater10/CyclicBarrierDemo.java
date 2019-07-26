@@ -1,6 +1,5 @@
 package com.bywin.concurrency.chapater10;
 
-import java.util.Random;
 import java.util.concurrent.CyclicBarrier;
 
 /**

@@ -11,13 +11,13 @@ import java.util.concurrent.TimeUnit;
  * 一次只允许一个线程访问同一个资源的局限
  * created by yeric on 2019/7/15 22:23
  */
-public class SemapDemo implements Runnable {
+public class SemaphoreDemo implements Runnable {
     // 声明一个包含5个许可的信号量
     final Semaphore semp = new Semaphore(5);
 
     public static void main(String[] args) {
         ExecutorService exec = Executors.newFixedThreadPool(20);
-        SemapDemo semapDemo = new SemapDemo();
+        SemaphoreDemo semapDemo = new SemaphoreDemo();
         for (int i = 0; i < 20; i++) {
             exec.submit(semapDemo);
         }
