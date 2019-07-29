@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * AtomicInteger提供原子操作来进行Integer的使用
+ * 原子类的增强->LongAdder;LongAdder的增强版：LongAccumulator
  * created by yeric on 2019/7/5
  */
 public class AtomicIntegerTest {
