@@ -1,5 +1,7 @@
 package com.bywin.concurrency.chapater13;
 
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -8,6 +10,15 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class ConcurrentHashMap1 {
     public static void main(String[] args) {
-        new ConcurrentHashMap();
+        ConcurrentHashMap map = new ConcurrentHashMap();
+        map.put("key1", "value1");
+        map.put("key2", "value2");
+        map.put("key3", "value3");
+        map.put("key4", "value4");
+        Set set = map.entrySet();
+        Iterator iterator = set.iterator();
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
 }

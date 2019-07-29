@@ -1,0 +1,8 @@
+1. 接收的参数不一样;
+    execute只能接受Runnable类型的任务
+    submit不管是Runnable还是Callable类型的任务都可以接受，但是Runnable返回值均为void，所以使用Future的get()获得的还是null
+
+2. submit()有返回值Future,调用get()获取，而execute()没有;
+
+
+3. submit()可以进行Exception处理;submit提交任务时不会有异常，因为异常被当作结果返回了,除非对返回值Future调用get()方法。excute方法会抛出异常。
