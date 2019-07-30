@@ -1,0 +1,10 @@
+spring:
+  mail:
+    host: smtp.163.com
+    username: yerikm@163.com
+    password: mini1027
+server:
+  port: 10086
+to:
+  mail:
+    address: 290494469@qq.com

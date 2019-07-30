@@ -26,6 +26,6 @@ public class newSingleThreadExecutorDemo {
             });
         }
         singleThreadExecutor.shutdown();
-        System.out.println("on the main thread...");
+        System.out.println("on the mail thread...");
     }
 }
