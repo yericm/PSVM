@@ -1,6 +1,8 @@
 package com.bywin.mail.controller;
 
 import com.bywin.mail.config.ReceiveConfig;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.mail.MailProperties;
@@ -10,6 +12,7 @@ import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +32,7 @@ import java.util.Properties;
 @RequestMapping("/mail")
 @Slf4j
 @EnableConfigurationProperties(ReceiveConfig.class)
+@Api(description = "发送邮件")
 public class MailController {
 
     @Autowired
@@ -43,7 +47,8 @@ public class MailController {
     @Autowired
     private ReceiveConfig receiveConfig;
 
-    @RequestMapping("/send")
+    @ApiOperation(value = "只有内容的邮件功能")
+    @GetMapping("/send")
     public void sendMail() {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom(mailProperties.getUsername());
@@ -59,7 +64,7 @@ public class MailController {
         }
     }
 
-    @RequestMapping("/send2")
+    @GetMapping("/send2")
     public void sendMain2() throws Exception {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.163.com");//指定邮件的发送服务器地址
@@ -101,7 +106,8 @@ public class MailController {
     /**
      * 发送带有附件的邮件
      */
-    @RequestMapping("/send3")
+    @ApiOperation(value = "带附件的邮件功能")
+    @GetMapping("/send3")
     public void sendMail3() throws Exception {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
@@ -124,7 +130,8 @@ public class MailController {
      * 嵌入静态资源
      * @throws Exception
      */
-    @RequestMapping("/send4")
+    @ApiOperation(value = "嵌入静态资源的邮件功能")
+    @GetMapping("/send4")
     public void sendMail4() throws Exception {
         MimeMessage mimeMessage = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, true);
