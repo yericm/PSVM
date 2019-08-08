@@ -1,5 +1,7 @@
 package com.bywin.download.controller;
 
+import com.bywin.download.model.AppInfoKey;
+import com.bywin.download.utils.FileDownloadUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -33,7 +35,7 @@ public class DownLoadDemo {
     public ResponseEntity<FileSystemResource> downloadTxt() throws IOException {
 
 
-        KeyResultDTO key = new KeyResultDTO();
+        AppInfoKey key = new AppInfoKey();
         key.setAppId("50047672928943B184FD004179675790");
         key.setAppKey("B9764C835C6D473CBAADD615BA784762");
 

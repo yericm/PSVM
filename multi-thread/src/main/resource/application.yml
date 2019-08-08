@@ -3,8 +3,24 @@ spring:
     host: smtp.163.com
     username: yerikm@163.com
     password: mini1027
+
+  datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/citybrain_service?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+      username: root
+      password: 123456
+      max-active: 200
+      max-wait: 2000
 server:
   port: 10086
 to:
   mail:
     address: 290494469@qq.com
+
+mybatis:
+  configuration:
+    mapUnderscoreToCamelCase: true
+    logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml

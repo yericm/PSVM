@@ -1,4 +1,4 @@
-package com.bywin.download.controller;
+package com.bywin.download.utils;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.ResourceUtils;

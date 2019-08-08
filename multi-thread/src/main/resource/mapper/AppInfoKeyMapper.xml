@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bywin.download.dao.AppInfoKeyMapper">
+  <resultMap id="BaseResultMap" type="com.bywin.download.model.AppInfoKey">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="app_info_id" jdbcType="BIGINT" property="appInfoId" />
+    <result column="app_id" jdbcType="VARCHAR" property="appId" />
+    <result column="app_key" jdbcType="VARCHAR" property="appKey" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="approval_time" jdbcType="TIMESTAMP" property="approvalTime" />
+    <result column="approval_status" jdbcType="VARCHAR" property="approvalStatus" />
+    <result column="approval_user_id" jdbcType="BIGINT" property="approvalUserId" />
+    <result column="approval_user_name" jdbcType="VARCHAR" property="approvalUserName" />
+    <result column="main_key" jdbcType="INTEGER" property="mainKey" />
+    <result column="admin_name" jdbcType="VARCHAR" property="adminName" />
+    <result column="admin_mobile" jdbcType="VARCHAR" property="adminMobile" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_view" jdbcType="INTEGER" property="isView" />
+    <result column="is_download" jdbcType="INTEGER" property="isDownload" />
+    <result column="encrypt_app_key" jdbcType="VARCHAR" property="encryptAppKey" />
+    <result column="admin_email" jdbcType="VARCHAR" property="adminEmail" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, app_info_id, app_id, app_key, name, create_time, modify_time, approval_time, 
+    approval_status, approval_user_id, approval_user_name, main_key, admin_name, admin_mobile, 
+    start_time, end_time, state, remark, is_view, is_download, encrypt_app_key, admin_email
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from app_info_key
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from app_info_key
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.bywin.download.model.AppInfoKey">
+    insert into app_info_key (id, app_info_id, app_id, 
+      app_key, name, create_time, 
+      modify_time, approval_time, approval_status, 
+      approval_user_id, approval_user_name, main_key, 
+      admin_name, admin_mobile, start_time, 
+      end_time, state, remark, 
+      is_view, is_download, encrypt_app_key, 
+      admin_email)
+    values (#{id,jdbcType=BIGINT}, #{appInfoId,jdbcType=BIGINT}, #{appId,jdbcType=VARCHAR}, 
+      #{appKey,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{approvalTime,jdbcType=TIMESTAMP}, #{approvalStatus,jdbcType=VARCHAR}, 
+      #{approvalUserId,jdbcType=BIGINT}, #{approvalUserName,jdbcType=VARCHAR}, #{mainKey,jdbcType=INTEGER}, 
+      #{adminName,jdbcType=VARCHAR}, #{adminMobile,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, 
+      #{endTime,jdbcType=TIMESTAMP}, #{state,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR}, 
+      #{isView,jdbcType=INTEGER}, #{isDownload,jdbcType=INTEGER}, #{encryptAppKey,jdbcType=VARCHAR}, 
+      #{adminEmail,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.bywin.download.model.AppInfoKey">
+    insert into app_info_key
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="appInfoId != null">
+        app_info_id,
+      </if>
+      <if test="appId != null">
+        app_id,
+      </if>
+      <if test="appKey != null">
+        app_key,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="approvalTime != null">
+        approval_time,
+      </if>
+      <if test="approvalStatus != null">
+        approval_status,
+      </if>
+      <if test="approvalUserId != null">
+        approval_user_id,
+      </if>
+      <if test="approvalUserName != null">
+        approval_user_name,
+      </if>
+      <if test="mainKey != null">
+        main_key,
+      </if>
+      <if test="adminName != null">
+        admin_name,
+      </if>
+      <if test="adminMobile != null">
+        admin_mobile,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="isView != null">
+        is_view,
+      </if>
+      <if test="isDownload != null">
+        is_download,
+      </if>
+      <if test="encryptAppKey != null">
+        encrypt_app_key,
+      </if>
+      <if test="adminEmail != null">
+        admin_email,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="appInfoId != null">
+        #{appInfoId,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null">
+        #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalTime != null">
+        #{approvalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalStatus != null">
+        #{approvalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalUserId != null">
+        #{approvalUserId,jdbcType=BIGINT},
+      </if>
+      <if test="approvalUserName != null">
+        #{approvalUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="mainKey != null">
+        #{mainKey,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminMobile != null">
+        #{adminMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isView != null">
+        #{isView,jdbcType=INTEGER},
+      </if>
+      <if test="isDownload != null">
+        #{isDownload,jdbcType=INTEGER},
+      </if>
+      <if test="encryptAppKey != null">
+        #{encryptAppKey,jdbcType=VARCHAR},
+      </if>
+      <if test="adminEmail != null">
+        #{adminEmail,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.bywin.download.model.AppInfoKey">
+    update app_info_key
+    <set>
+      <if test="appInfoId != null">
+        app_info_id = #{appInfoId,jdbcType=BIGINT},
+      </if>
+      <if test="appId != null">
+        app_id = #{appId,jdbcType=VARCHAR},
+      </if>
+      <if test="appKey != null">
+        app_key = #{appKey,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalTime != null">
+        approval_time = #{approvalTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approvalStatus != null">
+        approval_status = #{approvalStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="approvalUserId != null">
+        approval_user_id = #{approvalUserId,jdbcType=BIGINT},
+      </if>
+      <if test="approvalUserName != null">
+        approval_user_name = #{approvalUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="mainKey != null">
+        main_key = #{mainKey,jdbcType=INTEGER},
+      </if>
+      <if test="adminName != null">
+        admin_name = #{adminName,jdbcType=VARCHAR},
+      </if>
+      <if test="adminMobile != null">
+        admin_mobile = #{adminMobile,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isView != null">
+        is_view = #{isView,jdbcType=INTEGER},
+      </if>
+      <if test="isDownload != null">
+        is_download = #{isDownload,jdbcType=INTEGER},
+      </if>
+      <if test="encryptAppKey != null">
+        encrypt_app_key = #{encryptAppKey,jdbcType=VARCHAR},
+      </if>
+      <if test="adminEmail != null">
+        admin_email = #{adminEmail,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.bywin.download.model.AppInfoKey">
+    update app_info_key
+    set app_info_id = #{appInfoId,jdbcType=BIGINT},
+      app_id = #{appId,jdbcType=VARCHAR},
+      app_key = #{appKey,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      approval_time = #{approvalTime,jdbcType=TIMESTAMP},
+      approval_status = #{approvalStatus,jdbcType=VARCHAR},
+      approval_user_id = #{approvalUserId,jdbcType=BIGINT},
+      approval_user_name = #{approvalUserName,jdbcType=VARCHAR},
+      main_key = #{mainKey,jdbcType=INTEGER},
+      admin_name = #{adminName,jdbcType=VARCHAR},
+      admin_mobile = #{adminMobile,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR},
+      is_view = #{isView,jdbcType=INTEGER},
+      is_download = #{isDownload,jdbcType=INTEGER},
+      encrypt_app_key = #{encryptAppKey,jdbcType=VARCHAR},
+      admin_email = #{adminEmail,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <!--以下为自定义sql-->
+    <!--密钥列表使用的map-->
+    <resultMap id="keyListMap" type="com.bywin.download.model.AppInfoKey">
+        <id column="id" property="id" />
+        <result column="app_id" property="appId" />
+        <result column="admin_name" property="adminName" />
+        <result column="end_time" property="endTime" />
+        <result column="state" property="state" />
+        <result column="create_time" property="createTime" />
+        <result column="modify_time" property="modifyTime" />
+    </resultMap>
+    <!--待审核密钥列表使用的map-->
+    <resultMap id="approvalMap" type="com.bywin.download.model.AppInfoKey">
+        <id column="id" property="id" />
+        <result column="approval_status" property="approvalStatus" />
+        <result column="admin_name" property="adminName" />
+        <result column="admin_mobile" property="adminMobile" />
+        <result column="end_time" property="endTime" />
+        <result column="create_time" property="createTime" />
+    </resultMap>
+    <!--接入方主密钥信息使用的map-->
+    <resultMap id="mainKeyMap" type="com.bywin.download.model.AppInfoKey">
+        <id column="id" property="id" />
+        <result column="app_id" property="appId" />
+        <result column="admin_name" property="adminName" />
+        <result column="end_time" property="endTime" />
+        <result column="state" property="state" />
+        <result column="start_time" property="startTime" />
+        <result column="remark" property="remark" />
+        <result column="app_info_id" property="appInfoId" />
+        <result column="is_view" property="isView" />
+        <result column="is_download" property="isDownload" />
+        <result column="approval_time" property="approvalTime" />
+    </resultMap>
+    <!--密钥列表-->
+    <select id="findAppInfoKeyList" parameterType="com.bywin.download.model.AppInfoKey" resultMap="keyListMap">
+        select * from app_info_key
+    </select>
+</mapper>
