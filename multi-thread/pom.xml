@@ -84,6 +84,7 @@
 
 
     <build>
+        <directory>../target</directory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -106,7 +107,7 @@
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
-                        <version>6.0.6</version>
+                        <version>8.0.13</version>
                         <scope>runtime</scope>
                     </dependency>
                 </dependencies>

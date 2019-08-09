@@ -27,7 +27,7 @@ public class DownLoadDemo {
     @GetMapping("/downloadDoc")
     @ApiOperation("下载服务器的文件")
     public void download(HttpServletResponse response) {
-        FileDownloadUtil.downloadFile(response, "doc/接入操作说明书.docx");
+        FileDownloadUtil.downloadFile(response, "doc/API导入模板.xlsx");
     }
 
     @GetMapping("/downloadTxt")
