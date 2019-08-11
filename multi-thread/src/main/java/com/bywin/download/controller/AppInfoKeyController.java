@@ -6,8 +6,10 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.extractor.ExcelExtractor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.extractor.XSSFExcelExtractor;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +47,8 @@ public class AppInfoKeyController {
         XSSFSheet sheet = workbook.createSheet("密钥表");
         // 设置居中
         XSSFCellStyle cellStyle = workbook.createCellStyle();
+        XSSFCreationHelper creationHelper = workbook.getCreationHelper();
+        ExcelExtractor excelExtractor = new XSSFExcelExtractor(workbook);
         cellStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER);
         cellStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
 
@@ -63,11 +67,11 @@ public class AppInfoKeyController {
             XSSFRow row1 = sheet.createRow(rowNum);
             XSSFCell cell = row1.createCell(0);
             cell.setCellStyle(cellStyle);
-            cell.setCellValue(apInfoKey.getId().toString());
+            cell.setCellValue(rowNum++);
             row1.createCell(1).setCellValue(new XSSFRichTextString(apInfoKey.getAppInfoId().toString()));
             row1.createCell(2).setCellValue(new XSSFRichTextString(apInfoKey.getAppId()));
             row1.createCell(3).setCellValue(new XSSFRichTextString(apInfoKey.getAppKey()));
-            rowNum++;
+            row1.createCell(4).setCellValue(apInfoKey.getCreateTime());
         }
         response.setContentType("application/octet-stream");
         response.setHeader("Content-disposition", "attachment;filename=" + new String(fileName.getBytes("UTF-8"), "iso-8859-1"));
