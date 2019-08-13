@@ -22,7 +22,7 @@ import java.io.*;
 @Slf4j
 @RestController
 @Api(value = "文件下载", description = "文件下载")
-public class DownLoadDemo {
+public class DownLoadController {
 
     @GetMapping("/downloadDoc")
     @ApiOperation("下载服务器的文件")
