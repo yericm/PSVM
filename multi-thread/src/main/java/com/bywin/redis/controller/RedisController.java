@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Api(description = "使用java操作redis")
+@RequestMapping("redis")
 public class RedisController {
 
     @Autowired
@@ -28,6 +30,20 @@ public class RedisController {
     })
     public Object setStringKeyValue (@RequestParam("key") String key, @RequestParam("value") String value) {
         redisUtil.set(key, value);
+        return redisUtil.get(key);
+    }
+
+    @ApiImplicitParam(name = "key", value = "键", required = true, paramType = "query", dataType = "String")
+    @PostMapping("removeSK")
+    @ApiOperation(value = "删除缓存")
+    public void removeStringKey (@RequestParam("key") String key) {
+        redisUtil.del(key);
+    }
+
+    @ApiImplicitParam(name = "key", value = "键", required = true, paramType = "query", dataType = "String")
+    @PostMapping("getSK")
+    @ApiOperation(value = "根据key获取值")
+    public Object getStringKey (@RequestParam("key") String key) {
         return redisUtil.get(key);
     }
 }
