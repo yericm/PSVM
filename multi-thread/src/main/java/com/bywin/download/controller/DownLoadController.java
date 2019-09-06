@@ -1,7 +1,7 @@
 package com.bywin.download.controller;
 
 import com.bywin.download.model.AppInfoKey;
-import com.bywin.download.utils.FileDownloadUtil;
+import com.bywin.util.FileDownloadUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;

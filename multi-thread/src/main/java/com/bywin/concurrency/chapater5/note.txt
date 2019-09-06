@@ -5,4 +5,3 @@
 3. public static native void yield(),这个静态方法一旦执行，它就会让出CPU。它能够让当前线程
 从“运行状态”进入到“就绪状态”，从而让其他等待线程获取执行权，但是不能保证在当前线程调用yield()之后，
 其他线程就一定能获得执行权，也有可能是当前线程又回到“运行状态”继续运行。
-com.bywin.concurrency.chapater5
