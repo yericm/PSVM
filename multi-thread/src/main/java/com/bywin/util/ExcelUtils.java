@@ -4,6 +4,7 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 
@@ -45,6 +46,10 @@ public class ExcelUtils {
         //字体大小
         font.setFontHeightInPoints((short) 11);
         headerStyle.setFont(font);
+
+        // 给行加背景色
+        headerStyle.setFillForegroundColor(IndexedColors.RED.index);
+        headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
         return headerStyle;
     }
 
