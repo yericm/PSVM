@@ -2,10 +2,8 @@ package com.bywin.util;
 
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 
 import javax.servlet.http.HttpServletResponse;
@@ -81,6 +79,22 @@ public class ExcelUtils {
         leftStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
         leftStyle.setWrapText(true);
         return leftStyle;
+    }
+
+    /**
+     * 功能描述: 锁定行（固定表头）
+     * 参数说明：
+     * HashMap setPaneMap = new HashMap();
+     * //第一个表格、第三行开始固定表头
+     * setPaneMap.put(1,3);
+     *
+     * @param sheet
+     * @param row
+     */
+    public static void createFreezePane(Sheet sheet, Integer row) {
+        if (row != null && row > 0) {
+            sheet.createFreezePane(0, row, 0, 1);
+        }
     }
 
     /**

@@ -35,6 +35,6 @@ public class BatchHandleController {
         boolean empty = file.isEmpty();
         long size = file.getSize();
 //        file.transferTo(new File("C:\\Users\\yerik\\Desktop"));
-        List<ArrayList<String>> list = new ExcelRead().readExcel(file);
+//        List<ArrayList<String>> list = new ExcelRead().readExcel(file);
     }
 }
