@@ -11,8 +11,28 @@ import java.util.List;
  */
 public class TestDemo {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
+        try {
+            int aa = aa();
+            System.out.println(aa);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+/*        int aa = aa();
+        System.out.println(aa);*/
+        System.out.println("sji");
+    }
 
+    public static  int aa () throws Exception{
+//        try {
+            System.out.println("123");
+            int a = 1 / 0;
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        }
+        System.out.println("333333333");
+        return 2;
     }
 }
 

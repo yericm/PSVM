@@ -33,7 +33,9 @@ public class AppInfoKeyController {
 
     @GetMapping("/findAll")
     @ApiOperation(value = "密钥列表")
-    public List<AppInfoKey> findAppInfoKeyList() {
+    public List<AppInfoKey> findAppInfoKeyList(@RequestAttribute("preHandle") String preHandle) {
+        System.out.println("拦截器设置的值：" + preHandle);
+        System.out.println("[业务处理：--------]");
         List<AppInfoKey> appInfoKeyList = appInfoKeyService.findAppInfoKeyList();
         return appInfoKeyList;
     }
