@@ -14,10 +14,13 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.extractor.XSSFExcelExtractor;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -26,14 +29,24 @@ import java.util.*;
 @RestController
 @Api(description = "密钥管理")
 @Slf4j
+@EnableScheduling
 public class AppInfoKeyController {
 
     @Autowired
     private AppInfoKeyService appInfoKeyService;
 
+    /**
+     * 静态定时任务
+     */
+    @Scheduled(fixedRate=5000)
+    public void schedulTask () {
+        System.out.println("【静态：】定时任务执行中..." + LocalDateTime.now());
+    }
+
     @GetMapping("/findAll")
     @ApiOperation(value = "密钥列表")
     public List<AppInfoKey> findAppInfoKeyList(@RequestAttribute("preHandle") String preHandle) {
+        System.out.println(this.getClass().getName());
         System.out.println("拦截器设置的值：" + preHandle);
         System.out.println("[业务处理：--------]");
         List<AppInfoKey> appInfoKeyList = appInfoKeyService.findAppInfoKeyList();

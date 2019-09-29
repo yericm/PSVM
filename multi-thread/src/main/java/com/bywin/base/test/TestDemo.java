@@ -1,10 +1,7 @@
 package com.bywin.base.test;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * created by yeric on 2019/8/7
@@ -12,53 +9,51 @@ import java.util.List;
 public class TestDemo {
 
     public static void main(String[] args) {
-        try {
-            int aa = aa();
-            System.out.println(aa);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        int[] nums = {1,2,3,4,5,6,7};
+        int target = 3;
+        int[] rotate = rotate(nums, target);
+        System.out.println(rotate);
+    /*    int[] nums = {2, 11, 7, 15};
+        int target = 9;
+        int[] ints = twoSum(nums, target);
+        System.out.println(ints.length);*/
+    }
+
+    public static int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            int complement = target - nums[i];
+            if (map.containsKey(complement)) {
+                return new int[] { map.get(complement), i };
+            }
+            map.put(nums[i], i);
         }
-/*        int aa = aa();
-        System.out.println(aa);*/
-        System.out.println("sji");
+        throw new IllegalArgumentException("No two sum solution");
     }
 
-    public static  int aa () throws Exception{
-//        try {
-            System.out.println("123");
-            int a = 1 / 0;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            System.out.println(e.getMessage());
-//        }
-        System.out.println("333333333");
-        return 2;
-    }
-}
-
-class Person {
-    int id;
-    String name;
-
-    public Person(int id, String name) {
-        super();
-        this.id = id;
-        this.name = name;
-    }
-
-    @Override
-    public int hashCode() {
-        return this.id;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        Person p = (Person) obj;
-        return this.id == p.id;
-    }
-
-    @Override
-    public String toString() {
-        return "编号：" + this.id + " 姓名： " + this.name;
+    public static int[] rotate(int[] nums, int k) {
+        int temp, previous;
+        for (int i = 0; i < k; i++) {
+            previous = nums[nums.length - 1];
+            for (int j = 0; j < nums.length; j++) {
+                temp = nums[j];// temp=1,temp=1
+                nums[j] = previous;// nums[0]=7;nums[1]=1
+                previous = temp;// previous=1;previous=1
+                // 1. [7,123456]
+            }
+        }
+        return nums;
+       /* if (k > nums.length) {
+            return nums;
+        }
+        int[] newArray = new int[nums.length];
+        int j = 0;
+        for (int i = 0; i < k; i++) {
+            newArray[j++] = nums[nums.length-k+i];
+        }
+        for (int i = 0; i < nums.length - k; i++) {
+            newArray[j++] = nums[i];
+        }
+        return newArray;*/
     }
 }
