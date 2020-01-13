@@ -12,7 +12,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="multi-thread" options="-parameters" />
+      <module name="multi-thread" options="" />
     </option>
   </component>
 </project>
