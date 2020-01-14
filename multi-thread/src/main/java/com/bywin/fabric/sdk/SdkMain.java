@@ -22,14 +22,14 @@ public class SdkMain {
 
     private static final Logger log = LoggerFactory.getLogger(SdkMain.class);
 
-    private static final String keyFolderPath = "E:\\fabric\\src\\main\\resources\\crypto-config\\peerOrganizations\\org2.example.com\\users\\Admin@org2.example.com\\msp\\keystore";
+    private static final String keyFolderPath = "E:\\code\\multi-thread\\multi-thread\\src\\main\\resources\\crypto-config\\peerOrganizations\\org2.example.com\\users\\Admin@org2.example.com\\msp\\keystore";
     private static final String keyFileName="963e857757370c37dbce26f965506be5205bb8e2cc1c316075496547cd0282c1_sk";
-    private static final String certFoldePath="E:\\fabric\\src\\main\\resources\\crypto-config\\peerOrganizations\\org2.example.com\\users\\Admin@org2.example.com\\msp\\admincerts";
+    private static final String certFoldePath="E:\\code\\multi-thread\\multi-thread\\src\\main\\resources\\crypto-config\\peerOrganizations\\org2.example.com\\users\\Admin@org2.example.com\\msp\\admincerts";
     private static final String certFileName="Admin@org2.example.com-cert.pem";
-    private static  final String tlsOrderFilePath = "E:\\fabric\\src\\main\\resources\\crypto-config\\ordererOrganizations\\example.com\\tlsca\\tlsca.example.com-cert.pem";
-    private static final String txfilePath = "E:\\fabric\\src\\main\\resources\\test.tx";
-    private static  final String tlsPeerFilePath = "E:\\fabric\\src\\main\\resources\\crypto-config\\peerOrganizations\\org1.example.com\\peers\\peer0.org1.example.com\\msp\\tlscacerts\\tlsca.org1.example.com-cert.pem";
-    private static  final String tlsPeerFilePathAddtion = "E:\\fabric\\src\\main\\resources\\crypto-config\\peerOrganizations\\org2.example.com\\tlsca\\tlsca.org2.example.com-cert.pem";
+    private static  final String tlsOrderFilePath = "E:\\code\\multi-thread\\multi-thread\\src\\main\\resources\\crypto-config\\ordererOrganizations\\example.com\\tlsca\\tlsca.example.com-cert.pem";
+    private static final String txfilePath = "E:\\code\\multi-thread\\multi-thread\\src\\main\\resources\\test.tx";
+    private static  final String tlsPeerFilePath = "E:\\code\\multi-thread\\multi-thread\\src\\main\\resources\\crypto-config\\peerOrganizations\\org1.example.com\\peers\\peer0.org1.example.com\\msp\\tlscacerts\\tlsca.org1.example.com-cert.pem";
+    private static  final String tlsPeerFilePathAddtion = "E:\\code\\multi-thread\\multi-thread\\src\\main\\resources\\crypto-config\\peerOrganizations\\org2.example.com\\tlsca\\tlsca.org2.example.com-cert.pem";
     /*public static void main(String[] args) throws InvalidKeySpecException, NoSuchAlgorithmException, CryptoException, IOException, IllegalAccessException, InvalidArgumentException, InstantiationException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, org.hyperledger.fabric.sdk.exception.CryptoException, TransactionException, ProposalException {
 
         UserContext userContext = new UserContext();
@@ -141,7 +141,7 @@ public class SdkMain {
 
    //注册用户 hqCZUStrRTAR
    public static void main(String[] args) throws Exception {
-        FabricCAClient caClient = new FabricCAClient("http://192.168.70.43",null);
+        FabricCAClient caClient = new FabricCAClient("http://172.18.111.114:7054",null);
         UserContext register = new UserContext();
         register.setName("lihua");
         register.setAffiliation("org2");

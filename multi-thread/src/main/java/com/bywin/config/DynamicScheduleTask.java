@@ -40,11 +40,14 @@ public class DynamicScheduleTask implements SchedulingConfigurer {
     @Override
     public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
 
-        taskRegistrar.addTriggerTask(
+        /*taskRegistrar.addTriggerTask(
                 //1.添加任务内容(Runnable)
                 () -> {
                     System.out.println("执行动态定时任务: " + LocalDateTime.now().toLocalTime());
-                    List<AppInfoKey> appInfoKeyList = appInfoKeyService.findAppInfoKeyList();
+//                    List<AppInfoKey> appInfoKeyList = appInfoKeyService.findAppInfoKeyList();
+                    AppInfoKey appInfoKey = new AppInfoKey();
+                    appInfoKey.setId(7548L);
+                    List<AppInfoKey> appInfoKeyList = appInfoKeyService.findAppInfoKeyList(appInfoKey);
                     System.out.println("密钥总数：" + appInfoKeyList.size());
                 },
                 //2.设置执行周期(Trigger)
@@ -58,6 +61,6 @@ public class DynamicScheduleTask implements SchedulingConfigurer {
                     //2.3 返回执行周期(Date)
                     return new CronTrigger(cron).nextExecutionTime(triggerContext);
                 }
-        );
+        );*/
     }
 }

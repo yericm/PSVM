@@ -1,6 +1,7 @@
 package com.bywin.download.dao;
 
 import com.bywin.download.model.AppInfoKey;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
+@Slf4j
 public class AppInfoKeyMapperTest {
 
     @Autowired
@@ -23,7 +25,15 @@ public class AppInfoKeyMapperTest {
 
     @Test
     public void testFindAll () {
-        List<AppInfoKey> appInfoKeyList = appInfoKeyMapper.findAppInfoKeyList();
+/*        List<AppInfoKey> appInfoKeyList = appInfoKeyMapper.findAppInfoKeyList();
+        if (appInfoKeyList.size() > 0) {
+            try {
+                int i = 1 / 0;
+            } catch (Exception e) {
+                e.printStackTrace();
+                log.error("cuo: {}",e.getMessage());
+            }
+        }*/
     }
 
 }

@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
  */
 @Component
 //@EnableScheduling
-@EnableAsync
+//@EnableAsync
 public class MultithreadScheduleTask {
-    @Async
+/*    @Async
     @Scheduled(fixedDelay = 1000)  //间隔1秒
     public void tash1() {
         System.out.println("第一个定时任务开始。。。" + LocalDateTime.now());
@@ -26,5 +26,5 @@ public class MultithreadScheduleTask {
     @Scheduled(fixedDelay = 3000)  //间隔1秒
     public void tash2() {
         System.out.println("第二个定时任务开始。。。" + LocalDateTime.now());
-    }
+    }*/
 }

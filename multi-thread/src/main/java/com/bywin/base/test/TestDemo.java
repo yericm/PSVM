@@ -1,5 +1,10 @@
 package com.bywin.base.test;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+import com.bywin.download.model.AppInfoKey;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -12,7 +17,29 @@ import java.util.*;
 public class TestDemo {
 
     public static void main(String[] args) {
-        double o = (double)(1)/3;
+//        String s = "hello world";
+        AppInfoKey appInfoKey = new AppInfoKey();
+        appInfoKey.setAppKey("key");
+        appInfoKey.setAppId("id");
+        String s = JSONArray.toJSONString(appInfoKey);
+        System.out.println(s);
+        Date beginTime = new Date(2019, 12, 10,12,22,36);
+        Date endTime = new Date(2020, 12, 10,12,22,36);
+        Date now = new Date();
+        // 失效日期大于生效日期
+        if (endTime.before(beginTime)) {
+            System.out.println("失效日期大于生效日期");
+        }
+        // 生效日期在当前日期后面
+        if (now.before(beginTime)) {
+            System.out.println("生效日期在当前日期后面");
+        }
+        // 失效日期在当前日期前面
+        if (endTime.before(now)) {
+            System.out.println("失效日期在当前日期前面");
+        }
+        System.out.println("正常");
+       /* double o = (double)(1)/3;
         System.out.println("o----------   "+(Math.round(o)));
         System.out.println("0.0-0.0----   "+(0.0-0.0)/0.0);
         BigDecimal b = new BigDecimal((double)(1689-1787)/1687);
@@ -22,7 +49,7 @@ public class TestDemo {
         double tpD = 6.15565;
         BigDecimal bigD = new BigDecimal(tpD);
         double tpD2 = bigD .setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        System.out.println(tpD2);
+        System.out.println(tpD2);*/
         /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
 //            Date date = sdf.parse("2019-03-31");
