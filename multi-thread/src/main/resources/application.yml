@@ -1,7 +1,4 @@
 spring:
-  server:
-    port: 1008
-
   mail:
     host: smtp.163.com
     username: yerikm@163.com
@@ -49,3 +46,5 @@ mybatis:
     mapUnderscoreToCamelCase: true
     logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/*.xml
+server:
+  port: 80

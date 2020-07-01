@@ -38,7 +38,7 @@ public class AppInfoKeyController {
     /**
      * 静态定时任务
      */
-    @Scheduled(fixedRate=5000)
+//    @Scheduled(fixedRate=5000)
     public void schedulTask () {
         System.out.println("【静态：】定时任务执行中..." + LocalDateTime.now());
     }

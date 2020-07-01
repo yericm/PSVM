@@ -1,16 +1,30 @@
 package com.bywin.base.sort;
 
+import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * 排序算法
  */
 public class SortAlgorithm {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
         int[] arr = {5, 1, 0, 9, 20, 7};
         // selectSort(arr);
         // bubbleSort(arr);
-        insertSort(arr);
+//        insertSort(arr);
+        Date date = DateUtils.parseDate("2099-12-12 23:59:59", "yyyy-MM-dd HH:mm:ss");
+        System.out.println(date);
+        Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+        int hour24 = calendar.get(Calendar.HOUR_OF_DAY);
+        System.out.println(hour24);
+        Date parse = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2099-12-12 23:59:59");
+        System.out.println(parse);
     }
 
     /**
