@@ -23,32 +23,33 @@ public class ExcelUtils {
      * @return
      */
     public static CellStyle getHeaderStyle(Workbook workbook) {
-        //新建表头单元格样式
-        CellStyle headerStyle = workbook.createCellStyle();
-        //下边框
-        headerStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN);
-        //左边框
-        headerStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN);
-        //上边框
-        headerStyle.setBorderTop(HSSFCellStyle.BORDER_THIN);
-        //右边框
-        headerStyle.setBorderRight(HSSFCellStyle.BORDER_THIN);
-        // 居中
-        headerStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER);
-        headerStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
-
-        Font font = workbook.createFont();
-        font.setFontName("仿宋_GB2312");
-        //粗体显示
-        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
-        //字体大小
-        font.setFontHeightInPoints((short) 11);
-        headerStyle.setFont(font);
-
-        // 给行加背景色
-        headerStyle.setFillForegroundColor(IndexedColors.RED.index);
-        headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
-        return headerStyle;
+//        //新建表头单元格样式
+//        CellStyle headerStyle = workbook.createCellStyle();
+//        //下边框
+//        headerStyle.setBorderBottom(HSSFCellStyle.BORDER_THIN);
+//        //左边框
+//        headerStyle.setBorderLeft(HSSFCellStyle.BORDER_THIN);
+//        //上边框
+//        headerStyle.setBorderTop(HSSFCellStyle.BORDER_THIN);
+//        //右边框
+//        headerStyle.setBorderRight(HSSFCellStyle.BORDER_THIN);
+//        // 居中
+//        headerStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER);
+//        headerStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
+//
+//        Font font = workbook.createFont();
+//        font.setFontName("仿宋_GB2312");
+//        //粗体显示
+//        font.setBoldweight(HSSFFont.BOLDWEIGHT_BOLD);
+//        //字体大小
+//        font.setFontHeightInPoints((short) 11);
+//        headerStyle.setFont(font);
+//
+//        // 给行加背景色
+//        headerStyle.setFillForegroundColor(IndexedColors.RED.index);
+//        headerStyle.setFillPattern(CellStyle.SOLID_FOREGROUND);
+//        return headerStyle;
+        return null;
     }
 
     /**
@@ -60,8 +61,8 @@ public class ExcelUtils {
     public static CellStyle getCenterStyle(Workbook workbook) {
         // 居中样式
         CellStyle centerStyle = workbook.createCellStyle();
-        centerStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER);
-        centerStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
+//        centerStyle.setAlignment(XSSFCellStyle.ALIGN_CENTER);
+//        centerStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
         // 自动换行
         centerStyle.setWrapText(true);
         return centerStyle;
@@ -75,8 +76,8 @@ public class ExcelUtils {
      */
     public static CellStyle getLeftStyle(Workbook workbook) {
         CellStyle leftStyle = workbook.createCellStyle();
-        leftStyle.setAlignment(XSSFCellStyle.ALIGN_LEFT);
-        leftStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
+//        leftStyle.setAlignment(XSSFCellStyle.ALIGN_LEFT);
+//        leftStyle.setVerticalAlignment(XSSFCellStyle.VERTICAL_CENTER);
         leftStyle.setWrapText(true);
         return leftStyle;
     }
