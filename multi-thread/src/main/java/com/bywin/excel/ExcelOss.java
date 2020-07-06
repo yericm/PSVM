@@ -1,69 +1,29 @@
-package com.bywin.base.sort;
+package com.bywin.excel;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.aliyun.oss.HttpMethod;
 import com.aliyun.oss.OSS;
 import com.aliyun.oss.OSSClientBuilder;
 import com.aliyun.oss.model.GeneratePresignedUrlRequest;
 import com.aliyun.oss.model.OSSObject;
-import com.bywin.dto.KefuDTO;
 import com.bywin.dto.KefuSeatDTO;
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.time.DateFormatUtils;
-import org.apache.commons.lang3.time.DateUtils;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
-
 /**
- * 排序算法
+ * @author yeric
+ * @date 2020/7/6 11:55
  */
-public class SortAlgorithm {
+public class ExcelOss {
     public static void main(String[] args) throws ParseException, IOException {
 //        write();
-//        read();
-        KefuSeatDTO kefuSeatDTO = new KefuSeatDTO();
-        kefuSeatDTO.setType(1);
-        kefuSeatDTO.setName("高一一");
-        KefuSeatDTO kefuSeatDTO2 = new KefuSeatDTO();
-        kefuSeatDTO2.setType(1);
-        kefuSeatDTO2.setName("张一一");
-        KefuSeatDTO kefuSeatDTO3 = new KefuSeatDTO();
-        kefuSeatDTO3.setType(2);
-        kefuSeatDTO3.setName("高二二");
-        KefuSeatDTO kefuSeatDTO4 = new KefuSeatDTO();
-        kefuSeatDTO4.setType(2);
-        kefuSeatDTO4.setName("张二二");
-        List<KefuSeatDTO> list = new ArrayList<>();
-        list.add(kefuSeatDTO);
-        list.add(kefuSeatDTO2);
-        list.add(kefuSeatDTO3);
-        list.add(kefuSeatDTO4);
-        Map<Integer, List<KefuSeatDTO>> map = list.stream().collect(Collectors.groupingBy(KefuSeatDTO::getType, Collectors.toList()));
-        System.out.println(map);
-        List<KefuSeatDTO> kefuSeatDTOS = map.get(1);
-        System.out.println();
-        Map<Integer, String> map1 = new HashMap();
-        Short minColIx = 1;
-        map1.put(minColIx.intValue(), "diyige");
-        map1.put(2, "diyige2");
-        map1.entrySet().forEach(entry -> System.out.println("key:value = " + entry.getKey() + ":" + entry.getValue()));
-
-        String s = map1.get(minColIx.intValue()+1);
-        System.out.println(s);
+        read();
     }
 
     private static void write() throws IOException {
@@ -186,27 +146,34 @@ public class SortAlgorithm {
                     if (row.getRowNum() == 0) {
                         continue;
                     }
-                    System.out.println("单元格数量" + (row.getLastCellNum()));
-                    short minColIx = row.getFirstCellNum();
-                    short maxColIx = row.getLastCellNum();
+//                    System.out.println("单元格数量" + (row.getLastCellNum()));
+                    Short minColIx = row.getFirstCellNum();
+                    Short maxColIx = row.getLastCellNum();
+                    System.out.println("minColIx"+minColIx);
+                    System.out.println("maxColIx"+maxColIx);
 
                     for (short colIx = minColIx; colIx < maxColIx; colIx++) {
                         Cell cell = row.getCell(colIx);
+//                        System.out.println("现在是第"+(colIx+1)+"列");
+//                        String stringCellValue = cell.getStringCellValue();
                         if (cell != null) {
-                            switch (cell.getCellTypeEnum()) {
-                                case NUMERIC:
-                                    System.out.println(cell.getNumericCellValue());
-                                    break;
-                                case STRING:
-                                    System.out.println(cell.getStringCellValue());
-                                    break;
-                                case BOOLEAN:
-                                    System.out.println(cell.getBooleanCellValue());
-                                    break;
-                                case BLANK:
-                                    System.out.println("BLANK");
-
-                            }
+                            String stringCellValue = cell.getStringCellValue();
+                            System.out.println(stringCellValue);
+//                            System.out.println("列"+row.get());
+//                            switch (cell.getCellTypeEnum()) {
+//                                case NUMERIC:
+//                                    System.out.println(cell.getNumericCellValue());
+//                                    break;
+//                                case STRING:
+//                                    System.out.println(cell.getStringCellValue());
+//                                    break;
+//                                case BOOLEAN:
+//                                    System.out.println(cell.getBooleanCellValue());
+//                                    break;
+//                                case BLANK:
+//                                    System.out.println("BLANK");
+//
+//                            }
                         }
                     }
                     System.out.println("第" + row.getRowNum() + "行读取完毕");
