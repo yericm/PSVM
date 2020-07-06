@@ -2,4 +2,4 @@ https://www.oschina.net/p/java-excel-utils
 https://github.com/andyczy/czy-nexus-commons-utils/blob/master/README-Andyczy.md
 
 
-另一个开源工具：EasyExcel。可能比poi好用。
+另一个开源工具：EasyExcel。
