@@ -1,0 +1,36 @@
+if (EnumFieldType.NUMBER.value().equalsIgnoreCase(fieldType)) {
+//                                System.out.println("number");
+//
+//                                dto.setFieldValue(String.valueOf(cell.getNumericCellValue()));//todo
+//                            }
+//                            if (EnumFieldType.TEXT.value().equalsIgnoreCase(fieldType)
+//                                    || EnumFieldType.MOBILE.value().equalsIgnoreCase(fieldType)
+//                                    || EnumFieldType.ENUM.value().equalsIgnoreCase(fieldType)
+//                                    || EnumFieldType.ID_CARD.value().equalsIgnoreCase(fieldType)
+//                                    || EnumFieldType.UNKNOW.value().equalsIgnoreCase(fieldType)
+//                                    || EnumFieldType.EMAIL.value().equalsIgnoreCase(fieldType)) {
+//                                System.out.println("string");
+//                                dto.setFieldValue(cell.getStringCellValue());
+//                            }
+//                            if (EnumFieldType.TIME.value().equalsIgnoreCase(fieldType)) {
+//                                System.out.println("date");
+//                                dto.setFieldValue(DateFormatUtils.format(cell.getDateCellValue(), "yyyy-MM-dd HH:mm:ss"));
+//                            }
+//                            if (EnumFieldType.BOOLEAN.value().equalsIgnoreCase(fieldType)) {
+//                                System.out.println("boolean");
+//                                dto.setFieldValue(String.valueOf(cell.getBooleanCellValue()));
+//                            }
+//                            switch (cell.getCellTypeEnum()) {
+//                                case NUMERIC:
+//                                    System.out.println(cell.getNumericCellValue());
+//                                    break;
+//                                case STRING:
+//                                    System.out.println(cell.getStringCellValue());
+//                                    break;
+//                                case BOOLEAN:
+//                                    System.out.println(cell.getBooleanCellValue());
+//                                    break;
+//                                case BLANK:
+//                                    System.out.println("BLANK");
+//
+//                            }

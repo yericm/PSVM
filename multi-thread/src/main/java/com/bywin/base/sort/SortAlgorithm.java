@@ -18,6 +18,7 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.*;
+import org.springframework.beans.BeanUtils;
 
 import java.io.*;
 import java.text.ParseException;
@@ -31,39 +32,25 @@ import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
 /**
  * 排序算法
  */
-public class SortAlgorithm {
-    public static void main(String[] args) throws ParseException, IOException {
-//        write();
-//        read();
-        KefuSeatDTO kefuSeatDTO = new KefuSeatDTO();
-        kefuSeatDTO.setType(1);
-        kefuSeatDTO.setName("高一一");
-        KefuSeatDTO kefuSeatDTO2 = new KefuSeatDTO();
-        kefuSeatDTO2.setType(1);
-        kefuSeatDTO2.setName("张一一");
-        KefuSeatDTO kefuSeatDTO3 = new KefuSeatDTO();
-        kefuSeatDTO3.setType(2);
-        kefuSeatDTO3.setName("高二二");
-        KefuSeatDTO kefuSeatDTO4 = new KefuSeatDTO();
-        kefuSeatDTO4.setType(2);
-        kefuSeatDTO4.setName("张二二");
-        List<KefuSeatDTO> list = new ArrayList<>();
-        list.add(kefuSeatDTO);
-        list.add(kefuSeatDTO2);
-        list.add(kefuSeatDTO3);
-        list.add(kefuSeatDTO4);
-        Map<Integer, List<KefuSeatDTO>> map = list.stream().collect(Collectors.groupingBy(KefuSeatDTO::getType, Collectors.toList()));
-        System.out.println(map);
-        List<KefuSeatDTO> kefuSeatDTOS = map.get(1);
-        System.out.println();
-        Map<Integer, String> map1 = new HashMap();
-        Short minColIx = 1;
-        map1.put(minColIx.intValue(), "diyige");
-        map1.put(2, "diyige2");
-        map1.entrySet().forEach(entry -> System.out.println("key:value = " + entry.getKey() + ":" + entry.getValue()));
+public class SortAlgorithm<T> {
+    public static void main(String[] args) throws ParseException, IOException, InstantiationException, IllegalAccessException {
+        KefuSeatDTO kefuDTO = new KefuSeatDTO();
+        kefuDTO.setName("zhangsan");
+        Object o = getO(kefuDTO);
+        System.out.println(o.toString());
+    }
 
-        String s = map1.get(minColIx.intValue()+1);
-        System.out.println(s);
+    public static Object getO (Object object) throws IllegalAccessException, InstantiationException {
+        Class<?> clazz = object.getClass();
+        Object o = clazz.newInstance();
+        System.out.println(clazz.getInterfaces());
+        System.out.println(clazz.getSimpleName());
+        System.out.println(clazz.getCanonicalName());
+        System.out.println(clazz.desiredAssertionStatus());
+//        System.out.println(clazz.cast());
+        Object cast = clazz.cast(object);
+        BeanUtils.copyProperties(object, o);
+        return o;
     }
 
     private static void write() throws IOException {
