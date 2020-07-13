@@ -11,9 +11,9 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @EnableCaching
-@MapperScan(basePackages="com.yunyang.muke.dao")
+@MapperScan(basePackages="com.yunyang.muke.mapper")
 // 扫描 所有需要的包, 包含一些自用的工具类包 所在的路径
-@ComponentScan(basePackages= {"com.yunyang"})
+@ComponentScan(basePackages= {"com.yunyang", "org.n3r.idworker"})
 public class WeChatPractice {
     public static void main(String[] args) {
         SpringApplication.run(WeChatPractice.class, args);
