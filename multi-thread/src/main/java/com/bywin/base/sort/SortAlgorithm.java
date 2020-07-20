@@ -9,9 +9,11 @@ import com.aliyun.oss.model.GeneratePresignedUrlRequest;
 import com.aliyun.oss.model.OSSObject;
 import com.bywin.dto.KefuDTO;
 import com.bywin.dto.KefuSeatDTO;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.commons.lang3.time.DateUtils;
+import org.apache.commons.math3.random.RandomDataGenerator;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -34,10 +36,21 @@ import static org.apache.poi.ss.usermodel.CellType.NUMERIC;
  */
 public class SortAlgorithm<T> {
     public static void main(String[] args) throws ParseException, IOException, InstantiationException, IllegalAccessException {
-        KefuSeatDTO kefuDTO = new KefuSeatDTO();
-        kefuDTO.setName("zhangsan");
-        Object o = getO(kefuDTO);
-        System.out.println(o.toString());
+//        KefuSeatDTO kefuDTO = new KefuSeatDTO();
+//        kefuDTO.setName("zhangsan");
+//        Object o = getO(kefuDTO);
+//        System.out.println(o.toString());
+//        System.out.println(RandomUtils.nextInt());
+        int leftLimit = 2;
+        int rightLimit = 11;
+
+        Runnable r = () -> {
+            int generatedInteger = new RandomDataGenerator().nextInt( leftLimit,rightLimit);
+            System.out.println(generatedInteger);
+        };
+        for (int i = 1; i < 10; i++) {
+            new Thread(r).start();
+        }
     }
 
     public static Object getO (Object object) throws IllegalAccessException, InstantiationException {
