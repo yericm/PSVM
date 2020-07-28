@@ -1,0 +1,18 @@
+server:
+  port: 8000
+
+spring:
+  mail:
+    host: smtp.163.com
+    username: yerikm@163.com
+    password: mini1027
+
+  datasource:
+    name: mysql
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://127.0.0.1:3306/muke_weinxi?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456
+      max-active: 200
+      max-wait: 2000
