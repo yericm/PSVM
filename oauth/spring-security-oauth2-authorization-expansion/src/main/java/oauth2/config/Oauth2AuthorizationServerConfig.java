@@ -2,20 +2,16 @@ package oauth2.config;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.builders.InMemoryClientDetailsServiceBuilder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
-import org.springframework.security.oauth2.provider.token.store.KeyStoreKeyFactory;
 
 import java.time.Duration;
 
@@ -29,6 +25,8 @@ import java.time.Duration;
 public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     private final @NonNull
     AuthenticationManager authenticationManager;
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -55,44 +53,14 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
 
     }
 
-
-
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) {
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.authenticationManager(this.authenticationManager)
-                .tokenStore(tokenStore())
-                .accessTokenConverter(jwtAccessTokenConverter());
+        .userDetailsService(userDetailsService);
     }
 
-    /**
-     * 令牌转换器，非/对称密钥加密
-     *
-     * @return JwtAccessTokenConverter
-     */
-    @Bean
-    public JwtAccessTokenConverter jwtAccessTokenConverter() {
-        JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
-        //  对称密钥加密
-          converter.setSigningKey("oauth2");
-//        KeyStoreKeyFactory keyStoreKeyFactory = new KeyStoreKeyFactory(
-//                new ClassPathResource("oauth2.jks"), "oauth2".toCharArray());
-//        converter.setKeyPair(keyStoreKeyFactory.getKeyPair("oauth2"));
-        return converter;
-    }
-
-    /**
-     * token store 实现
-     *
-     * @return JwtTokenStore
-     */
-    @Bean
-    public TokenStore tokenStore() {
-        return new JwtTokenStore(jwtAccessTokenConverter());
-    }
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
-        security.checkTokenAccess("isAuthenticated()")
-                .tokenKeyAccess("isAuthenticated()");
+        security.checkTokenAccess("isAuthenticated()");
     }
-
 }
