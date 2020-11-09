@@ -26,4 +26,8 @@ public class OauthController {
     public HttpEntity<?> oauthMe(Principal principal) {
         return ResponseEntity.ok(principal);
     }
+    @GetMapping("/me1")
+    public HttpEntity<?> oauthMe1(Principal principal) {
+        return ResponseEntity.ok("我是受保护的资源----");
+    }
 }

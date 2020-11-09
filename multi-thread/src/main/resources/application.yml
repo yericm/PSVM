@@ -8,7 +8,7 @@ spring:
     name: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://127.0.0.1:3306/citybrain_service?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://127.0.0.1:3306/cspiretech_message?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai
       username: root
       password: 123456
       max-active: 200
@@ -47,7 +47,7 @@ mybatis:
     logImpl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mapper/*.xml
 server:
-  port: 80
+  port: 8080
 
   zipkin:
     base-url: http://localhost:9411
@@ -55,3 +55,9 @@ server:
     sampler:
       # 采样率，模式0.1，也就是10%，为了便于观察效果，改为1.0，也就是100%。生产环境建议保持默认。
       probability: 1.0
+
+aliyun:
+  note:
+    sendVerificationCode: SMS_200184063
+    accessKeyId: LTAI4FwMvTpo9467mSregAC8
+    accessKeySecret: V7DiGc0WQ56oO0siBqHzUj2O43qVfJ

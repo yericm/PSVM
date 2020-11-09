@@ -1,24 +1,21 @@
 package com.bywin.download.controller;
 
+import com.bywin.base.sort.Dto;
 import com.bywin.download.model.AppInfoKey;
 import com.bywin.download.service.AppInfoKeyService;
 import com.bywin.util.ExcelUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.poi.hssf.usermodel.*;
-import org.apache.poi.ss.extractor.ExcelExtractor;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.extractor.XSSFExcelExtractor;
 import org.apache.poi.xssf.usermodel.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -34,6 +31,9 @@ public class AppInfoKeyController {
 
     @Autowired
     private AppInfoKeyService appInfoKeyService;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     /**
      * 静态定时任务
@@ -51,6 +51,15 @@ public class AppInfoKeyController {
         System.out.println("[业务处理：--------]");
         List<AppInfoKey> appInfoKeyList = appInfoKeyService.findAppInfoKeyList();
         return appInfoKeyList;
+    }
+
+    @PostMapping("/obtainKeyCode")
+    public Object aa (@RequestBody @Valid Dto dto) {
+        return appInfoKeyService.ts(dto);
+//        JSONObject body = restTemplate.postForEntity("http://172.18.110.157:36104/secret/symmetry/obtainKeyCode", null, JSONObject.class).getBody();
+//        Object data = body.get("data");
+//        System.out.println(body);
+//        return body;
     }
 
 

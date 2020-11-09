@@ -13,6 +13,7 @@
         <module>spring-security-oauth2-resource</module>
         <module>spring-security-oauth2-resource-jwt</module>
         <module>spring-security-oauth2-authorization-more-grant-type</module>
+        <module>spring-boot-oauth2-auto-config</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

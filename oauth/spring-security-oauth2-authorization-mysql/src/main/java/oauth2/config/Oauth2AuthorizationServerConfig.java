@@ -42,6 +42,13 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     }
 
 
+
+    @Override
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(this.authenticationManager).tokenStore(jdbcTokenStore());
+    }
+
+
     /**
      * 声明 ClientDetails实现
      *
@@ -50,12 +57,6 @@ public class Oauth2AuthorizationServerConfig extends AuthorizationServerConfigur
     @Bean
     public ClientDetailsService clientDetails() {
         return new JdbcClientDetailsService(dataSource);
-    }
-
-
-    @Override
-    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-        endpoints.authenticationManager(this.authenticationManager).tokenStore(jdbcTokenStore());
     }
 
     @Override

@@ -9,6 +9,6 @@ public class PasswordTest {
     @Test
     public void password() {
         // 每次打印的结果都不一样，不影响
-        System.out.println(new BCryptPasswordEncoder().encode("oauth2"));
+        System.out.println(new BCryptPasswordEncoder().encode("3c89fe43392a48a3b03129c9104ca5db"));
     }
 }
