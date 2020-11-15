@@ -14,7 +14,7 @@ import java.util.List;
 public class QiXinCai {
     public static void main(String[] args) {
         int i = 1;
-        int num = 10000;
+        int num = 100;
         List<Integer> list = new ArrayList<>();
         for (int j = 1; j <= num; j++) {
             while (true) {
@@ -29,6 +29,9 @@ public class QiXinCai {
             }
         }
         Collections.sort(list);
+        System.out.println("最少"+list.get(0)+"次");
+        System.out.println("第二少"+list.get(1)+"次");
+        System.out.println("第三少"+list.get(2)+"次");
         System.out.println("跑"+num+"次+，中奖8873最少需要"+list.get(0)+"次,"+"最多需要"+ list.get(num-1)+"次");
     }
 }
