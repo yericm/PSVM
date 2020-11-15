@@ -16,14 +16,5 @@ import java.util.List;
  */
 public class TestDemo {
     public static void main(String[] args) {
-        int APPLY_TYPE_TOPIC = 6;
-        System.out.println(6!=APPLY_TYPE_TOPIC);
-        System.out.println(!String.valueOf(6).equals(String.valueOf(APPLY_TYPE_TOPIC)));
-        System.out.println(6 == 6);
-        System.out.println(7 == 6);
-
-        System.out.println(6!=6);
-//        String s = DigestUtils.md5DigestAsHex("password.getBytes()".getBytes());
-//        System.out.println(s);
     }
 }
