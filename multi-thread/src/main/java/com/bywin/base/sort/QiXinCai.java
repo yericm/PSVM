@@ -14,7 +14,7 @@ import java.util.List;
 public class QiXinCai {
     public static void main(String[] args) {
         int i = 1;
-        int num = 100;
+        int num = 10000;
         List<Integer> list = new ArrayList<>();
         for (int j = 1; j <= num; j++) {
             while (true) {
