@@ -26,18 +26,18 @@ public class ReadWriteLockDemo {
             @Override
             public void run() {
                 // 使用读锁，多线程之间并行不会阻塞
-                demo.handleRead(readLock);
+//                demo.handleRead(readLock);
                 // 使用普通的重入锁
-//                demo.handleRead(lock);
+                demo.handleRead(lock);
             }
         };
         Runnable runnable1 = new Runnable() {
 
             @Override
             public void run() {
-                demo.handleWrite(writeLock, new Random().nextInt());
+//                demo.handleWrite(writeLock, new Random().nextInt());
                 // 使用普通的重入锁
-//                demo.handleWrite(lock, new Random().nextInt());
+                demo.handleWrite(lock, new Random().nextInt());
             }
         };
         for (int i = 0; i < 18; i++) {

@@ -19,6 +19,8 @@ import javax.validation.Valid;
 import java.io.*;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.stream.IntStream;
 
 /**
  * created by yeric on 2019/8/8
@@ -34,6 +36,26 @@ public class AppInfoKeyController {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    CountDownLatch countDownLatch = new CountDownLatch(3);
+
+
+    @GetMapping("/test/countdown")
+    public void T () throws InterruptedException {
+        IntStream.range(0,3).forEach(i->new Thread(()->{
+            try {
+                Thread.sleep(2000L);
+                System.out.println("子线程"+Thread.currentThread().getName());
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }finally {
+                countDownLatch.countDown();
+            }
+        }).start());
+        System.out.println("第一套子线程启动完毕");
+        countDownLatch.await();
+        System.out.println("主线程执行完毕");
+    }
 
     /**
      * 静态定时任务

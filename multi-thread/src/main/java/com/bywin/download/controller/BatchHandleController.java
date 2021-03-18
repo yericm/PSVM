@@ -1,11 +1,13 @@
 package com.bywin.download.controller;
 
+import com.bywin.dto.IdDTO;
+import com.bywin.dto.KefuDTO;
+import com.bywin.dto.KefuSeatDTO;
+import com.sun.xml.bind.v2.schemagen.xmlschema.Appinfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.core.io.Resource;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,5 +38,14 @@ public class BatchHandleController {
         long size = file.getSize();
 //        file.transferTo(new File("C:\\Users\\yerik\\Desktop"));
 //        List<ArrayList<String>> list = new ExcelRead().readExcel(file);
+    }
+
+    @PostMapping("testAspect")
+    public Object testAspect (@RequestBody IdDTO dto) {
+        System.out.println("进来testAspect了,id 是"+dto);
+        KefuSeatDTO vo = new KefuSeatDTO();
+        vo.setDeptId("部门ID");
+        vo.setName("部门名称");
+        return vo;
     }
 }
