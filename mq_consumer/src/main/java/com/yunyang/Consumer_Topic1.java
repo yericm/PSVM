@@ -25,6 +25,7 @@ public class Consumer_Topic1 {
         Connection connection = factory.newConnection();
         //4. 创建Channel
         Channel channel = connection.createChannel();
+        channel.basicQos(1,1,true);
 
 
         String queue1Name = "test_topic_queue1";

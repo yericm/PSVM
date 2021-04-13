@@ -3,6 +3,7 @@ package com.bywin.download.controller;
 import com.bywin.base.sort.Dto;
 import com.bywin.download.model.AppInfoKey;
 import com.bywin.download.service.AppInfoKeyService;
+import com.bywin.dto.TestMapDTO;
 import com.bywin.util.ExcelUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -39,6 +40,11 @@ public class AppInfoKeyController {
 
     CountDownLatch countDownLatch = new CountDownLatch(3);
 
+    @GetMapping("/test/testMapDTO")
+    public TestMapDTO testMapDTO (@RequestBody TestMapDTO dto) {
+        log.info("dto is {}",dto);
+        return dto;
+    }
 
     @GetMapping("/test/countdown")
     public void T () throws InterruptedException {

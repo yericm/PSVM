@@ -7,6 +7,8 @@ import com.bywin.dto.KefuDTO;
 import com.bywin.dto.KefuSeatDTO;
 import com.google.common.base.Joiner;
 import org.apache.commons.lang3.RandomUtils;
+import org.apache.commons.lang3.time.DateFormatUtils;
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.commons.text.StringEscapeUtils;
 import org.junit.Test;
 import org.springframework.util.DigestUtils;
@@ -29,12 +31,9 @@ import java.util.stream.Stream;
  */
 public class TestDemo {
     public static void main(String[] args) throws InterruptedException {
-        long start = System.currentTimeMillis();
-//        long count = IntStream.range(1, 200000).filter(TestDemo::isOu).count();
-        long count = IntStream.range(1, 200000).parallel().filter(TestDemo::isOu).count();
-//        System.out.println(count);
-        long end = System.currentTimeMillis();
-        System.out.println(end - start);
+        Date date = DateUtils.addMinutes(new Date(), 5);
+        String strDate = DateFormatUtils.format(date, "HH:mm");
+        System.out.println(strDate);
     }
 
     public static boolean isOu(int item) {
